@@ -58,10 +58,9 @@ void adapt_to(struct ngas_network_t *network, double signal[DIM_DATA]) {
 	    if (distances[i] < distances[next_ci])
 		next_ci = i;
 
-	for (int i = 0; i < DIM_DATA; ++i) {
+	for (int i = 0; i < DIM_DATA; ++i)
 	    network->weights[ci][i] = network->weights[ci][i]
 		+ epsilon * exp(-n/lambda) * (signal[i] - network->weights[ci][i]);
-	}
 
 	if (network->connections[ci][next_ci].connected == 0) {
 	    network->connections[ci][next_ci].connected = 1;
@@ -70,11 +69,11 @@ void adapt_to(struct ngas_network_t *network, double signal[DIM_DATA]) {
 	else if (network->connections[ci][next_ci].connected == 1)
 	    network->connections[ci][next_ci].age = 0;
 
-	for (int j = 0; j < NUM_UNITS; ++j) {
-	    if (network->connections[ci][j].connected == 1) {
-		++(network->connections[ci][j].age);
-		if (network->connections[ci][j].age > T)
-		    network->connections[ci][j].connected = 0;
+	for (int i = 0; i < NUM_UNITS; ++i) {
+	    if (network->connections[ci][i].connected == 1) {
+		++(network->connections[ci][i].age);
+		if (network->connections[ci][i].age > T)
+		    network->connections[ci][i].connected = 0;
 	    }
 	}
 
