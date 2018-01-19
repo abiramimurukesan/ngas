@@ -11,7 +11,7 @@
 void test_init_network() {
     printf("Testing init_network()... ");
 
-    struct ngas_network_t network;
+    struct ngas_network network;
     init_network(&network);
 
     for (int i = 0; i < NUM_UNITS; ++i) {
@@ -63,7 +63,7 @@ void test_dist() {
 void test_adapt_to() {
     printf("Testing adapt_to()...\n");
 
-    struct ngas_network_t network;
+    struct ngas_network network;
     init_network(&network);
 
     for (int i = 0; i < T_MAX; ++i) {

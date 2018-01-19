@@ -5,7 +5,7 @@
 
 #include "ngas.h"
 
-void init_network(struct ngas_network_t *network) {
+void init_network(struct ngas_network *network) {
     srand(time(NULL));
     
     for (int i = 0; i < NUM_UNITS; ++i) {
@@ -34,7 +34,7 @@ double dist(const double *v, const double *u, int dim) {
     return sqrt(sum);
 }
 
-void adapt_to(struct ngas_network_t *network, double signal[DIM_DATA]) {
+void adapt_to(struct ngas_network *network, double signal[DIM_DATA]) {
     double distances[NUM_UNITS];
     int n = 0, ci, next_ci;
 
